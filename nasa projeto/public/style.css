@@ -1,0 +1,1493 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Mono', monospace;
+    color: #E0E7FF;
+    font-size: 16px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body.dark-theme {
+    background-color: #000;
+    color: #E0E7FF;
+}
+
+#star-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2vh 2vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    padding: 4vh 0;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4vw;
+    color: #7B8CDE;
+    text-transform: uppercase;
+    letter-spacing: 0.5vw;
+    margin: 0;
+    padding: 2vh 0;
+    position: relative;
+    text-shadow: 0 0 15px #7B8CDE;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #7B8CDE, transparent);
+}
+
+.content-section {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 4vh 4vw;
+    border-radius: 1vw;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    text-align: center;
+}
+
+.content-section h2 {
+    color: #7B8CDE;
+    font-size: 2.5vw;
+    margin-bottom: 2vh;
+}
+
+.content-section h3 {
+    color: #E0E7FF;
+    font-size: 1.8vw;
+    margin-bottom: 0; /* Removido o margin-bottom já que não há mais parágrafo abaixo */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1.5vh 3vw;
+    background-color: #7B8CDE;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 0.5vw;
+    font-weight: bold;
+    font-size: 1.2vw;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #E0E7FF;
+    transform: translateY(-0.2vh);
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4vh;
+}
+
+.column.button {
+    flex: 0 1 calc(33.333% - 2vw);
+    margin: 1vh 1vw;
+    padding: 2vh 2vw;
+    background-color: rgba(123, 140, 222, 0.1);
+    border-radius: 1vw;
+    text-align: center;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #E0E7FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.column.button:hover {
+    transform: translateY(-0.5vh) scale(1.05);
+    box-shadow: 0 0 20px rgba(123, 140, 222, 0.3);
+}
+
+.planet-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 2vh;
+    transition: all 0.3s ease;
+}
+
+#rocky-planet {
+    background: radial-gradient(circle at 30% 30%, #a67c52, #8c5e3b);
+}
+
+#gas-giant {
+    background: radial-gradient(circle at 30% 30%, #e8c273, #d4a149);
+}
+
+#ice-planet {
+    background: radial-gradient(circle at 30% 30%, #a8d8ff, #5cacee);
+}
+
+.column.button:hover .planet-icon {
+    transform: rotate(360deg) scale(1.1);
+}
+
+.column.button h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5vw;
+    margin: 1vh 0;
+    color: #7B8CDE;
+}
+
+.column.button p {
+    font-size: 1vw;
+    margin-top: 1vh;
+}
+
+.planet-features {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 2vh;
+    text-align: left;
+}
+
+.planet-features li {
+    font-size: 0.9vw;
+    margin-bottom: 0.5vh;
+    position: relative;
+    padding-left: 1.5vw;
+}
+
+.planet-features li::before {
+    content: '•';
+    color: #7B8CDE;
+    position: absolute;
+    left: 0;
+}
+
+.featured-discovery {
+    margin-top: 6vh;
+}
+
+.featured-discovery h3 {
+    margin-top: 0; /* Remove o espaço superior do título */
+    margin-bottom: 1rem; /* Espaço abaixo do título */
+}
+
+.featured-discovery p {
+    margin-bottom: 1rem; /* Espaço entre parágrafos */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .featured-discovery {
+        flex-direction: column;
+    }
+
+    .featured-discovery img {
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem; /* Espaço abaixo da imagem em telas menores */
+    }
+}
+
+.discovery-content {
+    display: flex;
+    align-items: stretch;
+    background-color: rgba(123, 140, 222, 0.1);
+    border-radius: 1vw;
+    overflow: hidden;
+}
+
+.discovery-image {
+    width: 40%;
+    object-fit: cover;
+}
+
+.discovery-text {
+    padding: 2vh 2vw;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.discovery-text h4 {
+    color: #E0E7FF;
+    font-size: 1.8vw;
+    margin-bottom: 1vh;
+}
+
+.discovery-text p {
+    font-size: 1.1vw;
+    line-height: 1.6;
+    margin-bottom: 2vh;
+}
+
+.planet-comparison {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vh 0;
+}
+
+.planet-stat {
+    flex: 1;
+    margin: 0 0.5vw;
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 1vh 1vw;
+    border-radius: 0.5vw;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-weight: bold;
+    color: #7B8CDE;
+    margin-bottom: 0.5vh;
+}
+
+.stat-value {
+    display: block;
+    font-size: 0.9em;
+}
+
+.read-more-container {
+    margin-top: auto;
+    text-align: center;
+    padding-top: 2vh;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 1vh 2vw;
+    background-color: #7B8CDE;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 0.5vw;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: #E0E7FF;
+    transform: translateY(-0.2vh);
+}
+
+.exploration-timeline {
+    margin-top: 6vh;
+}
+
+.exploration-timeline h3 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+}
+
+.timeline {
+    list-style-type: none;
+    padding: 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2vw;
+    width: 2px;
+    background-color: #7B8CDE;
+}
+
+.timeline li {
+    margin-bottom: 4vh;
+    padding-left: 5vw;
+    position: relative;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 0.5vw;
+    top: 0;
+    width: 3vw;
+    height: 3vw;
+    background-color: #7B8CDE;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    color: #000000;
+}
+
+.timeline .date {
+    font-weight: bold;
+    color: #7B8CDE;
+    font-size: 1.2vw;
+    margin-bottom: 0.5vh;
+    display: block;
+}
+
+.timeline-content h4 {
+    color: #E0E7FF;
+    font-size: 1.4vw;
+    margin-bottom: 0.5vh;
+}
+
+.timeline-content p {
+    font-size: 1vw;
+    line-height: 1.6;
+}
+
+.footer {
+    margin-top: 6vh;
+    padding-top: 4vh;
+    border-top: 1px solid rgba(123, 140, 222, 0.3);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4vh;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 2vw;
+}
+
+.footer-section:last-child {
+    margin-right: 0;
+}
+
+.footer-section h4 {
+    color: #7B8CDE;
+    font-size: 1.4vw;
+    margin-bottom: 1vh;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 1vw;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5vh;
+}
+
+.footer-section ul li a {
+    color: #E0E7FF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #7B8CDE;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+.social-icon {
+    font-size: 1.5vw;
+    color: #7B8CDE;
+    margin: 0 1vw;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #E0E7FF;
+    transform: translateY(-0.2vh);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.9vw;
+    color: rgba(224, 231, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 6vw;
+    }
+
+    .content-section h2 {
+        font-size: 5vw;
+    }
+
+    .content-section h3 {
+        font-size: 4vw;
+    }
+
+    .content-section p {
+        font-size: 3.5vw;
+    }
+
+    .cta-button {
+        font-size: 3.5vw;
+        padding: 2vh 6vw;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .column.button {
+        flex: 1 1 auto;
+        margin: 2vh 0;
+    }
+
+    .column.button h2 {
+        font-size: 4.5vw;
+    }
+
+    .column.button p {
+        font-size: 3.5vw;
+    }
+
+    .planet-features li {
+        font-size: 3vw;
+    }
+
+    .featured-discovery h3 {
+        font-size: 5vw;
+    }
+
+    .discovery-content {
+        flex-direction: column;
+    }
+
+    .discovery-image {
+        width: 100%;
+    }
+
+    .discovery-text h4 {
+        font-size: 4.5vw;
+    }
+
+    .discovery-text p {
+        font-size: 3.5vw;
+    }
+
+    .stat-label {
+        font-size: 3vw;
+    }
+
+    .stat-value {
+        font-size: 3.5vw;
+    }
+
+    .exploration-timeline h3 {
+        font-size: 5vw;
+    }
+
+    .timeline::before {
+        left: 4vw;
+    }
+
+    .timeline li {
+        padding-left: 12vw;
+    }
+
+    .timeline-icon {
+        left: 2vw;
+        width: 8vw;
+        height: 8vw;
+        font-size: 4vw;
+    }
+
+    .timeline .date {
+        font-size: 3.5vw;
+    }
+
+    .timeline-content h4 {
+        font-size: 4vw;
+    }
+
+    .timeline-content p {
+        font-size: 3.5vw;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-right: 0;
+        margin-bottom: 4vh;
+    }
+
+    .footer-section h4 {
+        font-size: 4.5vw;
+    }
+
+    .footer-section p, .footer-section ul {
+        font-size: 3.5vw;
+    }
+
+    .social-icon {
+        font-size: 6vw;
+    }
+
+    .copyright {
+        font-size: 3vw;
+    }
+
+    .planet-stat {
+        flex-basis: 100%;
+    }
+}
+
+.back-button {
+    position: fixed;
+    top: 2vh;
+    left: 2vw;
+    padding: 1vh 2vw;
+    background-color: rgba(123, 140, 222, 0.2);
+    color: #E0E7FF;
+    text-decoration: none;
+    border-radius: 0.5vw;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    font-size: 1vw;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    background-color: rgba(123, 140, 222, 0.4);
+    transform: translateY(-0.2vh);
+}
+
+@media (max-width: 768px) {
+    .back-button {
+        font-size: 3vw;
+        padding: 1.5vh 3vw;
+    }
+}
+
+.discovery-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 4vh;
+}
+
+.discovery-details .discovery-image {
+    width: 40%;
+    height: auto;
+    border-radius: 1vw;
+    margin-right: 4vw;
+}
+
+.discovery-info {
+    flex: 1;
+}
+
+.discovery-info h2 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+}
+
+.discovery-info h3 {
+    color: #E0E7FF;
+    font-size: 1.5vw;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+}
+
+.discovery-info p {
+    font-size: 1.1vw;
+    line-height: 1.6;
+    margin-bottom: 2vh;
+}
+
+.conclusion {
+    font-size: 1.2vw;
+    font-style: italic;
+    color: #7B8CDE;
+    margin-top: 4vh;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .discovery-details {
+        flex-direction: column;
+    }
+
+    .discovery-details .discovery-image {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 4vh;
+    }
+
+    .discovery-info h2 {
+        font-size: 5vw;
+    }
+
+    .discovery-info h3 {
+        font-size: 4vw;
+    }
+
+    .discovery-info p, .conclusion {
+        font-size: 3.5vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .planet-comparison {
+        flex-direction: column;
+    }
+
+    .planet-stat {
+        margin: 1vh 0;
+    }
+}
+
+.discovery-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4vh 2vw;
+}
+
+.discovery-hero {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4vh;
+}
+
+.discovery-image {
+    width: 50%;
+    border-radius: 1vw;
+    box-shadow: 0 0 20px rgba(123, 140, 222, 0.3);
+}
+
+.discovery-quick-facts {
+    flex: 1;
+    margin-left: 2vw;
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 2vh 2vw;
+    border-radius: 1vw;
+}
+
+.discovery-quick-facts h3 {
+    color: #7B8CDE;
+    margin-bottom: 1vh;
+}
+
+.discovery-quick-facts ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.discovery-quick-facts li {
+    margin-bottom: 1vh;
+}
+
+.discovery-sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vw;
+}
+
+.discovery-section {
+    background-color: rgba(123, 140, 222, 0.05);
+    padding: 2vh 2vw;
+    border-radius: 1vw;
+    transition: all 0.3s ease;
+}
+
+.discovery-section:hover {
+    transform: translateY(-0.5vh);
+    box-shadow: 0 5px 15px rgba(123, 140, 222, 0.2);
+}
+
+.discovery-section h2 {
+    color: #7B8CDE;
+    margin-bottom: 1vh;
+}
+
+.discovery-conclusion {
+    margin-top: 4vh;
+    text-align: center;
+    padding: 2vh 2vw;
+    background-color: rgba(123, 140, 222, 0.1);
+    border-radius: 1vw;
+}
+
+@media (max-width: 768px) {
+    .discovery-hero {
+        flex-direction: column;
+    }
+
+    .discovery-image {
+        width: 100%;
+        margin-bottom: 2vh;
+    }
+
+    .discovery-quick-facts {
+        margin-left: 0;
+    }
+
+    .discovery-sections {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos para a prévia do ExoSolutions na página inicial */
+.exosolutions-preview {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 4vh 4vw;
+    border-radius: 1vw;
+    margin-top: 4vh;
+    text-align: center;
+}
+
+.exosolutions-preview h3 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+}
+
+.exosolutions-preview p {
+    font-size: 1.2vw;
+    margin-bottom: 2vh;
+}
+
+/* Estilos para a página ExoSolutions */
+.exosolutions-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4vh 2vw;
+}
+
+.exosolutions-intro {
+    text-align: center;
+    margin-bottom: 4vh;
+}
+
+.exosolutions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vw;
+}
+
+.exosolution-item {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 3vh 2vw;
+    border-radius: 1vw;
+    transition: all 0.3s ease;
+}
+
+.exosolution-item:hover {
+    transform: translateY(-0.5vh);
+    box-shadow: 0 5px 15px rgba(123, 140, 222, 0.2);
+}
+
+.exosolution-item h2 {
+    color: #7B8CDE;
+    font-size: 1.8vw;
+    margin-bottom: 2vh;
+}
+
+.exosolution-item p {
+    font-size: 1.1vw;
+}
+
+.exosolutions-cta {
+    text-align: center;
+    margin-top: 6vh;
+    padding: 4vh 4vw;
+    background-color: rgba(123, 140, 222, 0.1);
+    border-radius: 1vw;
+}
+
+.exosolutions-cta h3 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+}
+
+.exosolutions-cta p {
+    font-size: 1.2vw;
+    margin-bottom: 2vh;
+}
+
+@media (max-width: 768px) {
+    .exosolutions-preview h3 {
+        font-size: 5vw;
+    }
+
+    .exosolutions-preview p {
+        font-size: 3.5vw;
+    }
+
+    .exosolutions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exosolution-item h2 {
+        font-size: 4.5vw;
+    }
+
+    .exosolution-item p {
+        font-size: 3.5vw;
+    }
+
+    .exosolutions-cta h3 {
+        font-size: 5vw;
+    }
+
+    .exosolutions-cta p {
+        font-size: 3.5vw;
+    }
+}
+
+/* Estilos para estudos de caso */
+.case-study {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2vh 1vw;
+    margin-top: 2vh;
+    border-radius: 0.5vw;
+}
+
+.case-study h3 {
+    color: #7B8CDE;
+    font-size: 1.2vw;
+    margin-bottom: 1vh;
+}
+
+.case-study p {
+    font-size: 1vw;
+}
+
+/* Estilos para seção de parceiros */
+.partners-section {
+    margin-top: 6vh;
+}
+
+.partners-section h2 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+    text-align: center;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vw;
+}
+
+.partner {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 2vh 1vw;
+    border-radius: 0.5vw;
+    text-align: center;
+    font-size: 1.2vw;
+}
+
+/* Estilos para seção de notícias */
+.news-section {
+    margin-top: 6vh;
+}
+
+.news-section h2 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+}
+
+.news-item {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 2vh 2vw;
+    border-radius: 0.5vw;
+    margin-bottom: 2vh;
+}
+
+.news-item h3 {
+    color: #E0E7FF;
+    font-size: 1.5vw;
+    margin-bottom: 1vh;
+}
+
+.news-item p {
+    font-size: 1vw;
+    margin-bottom: 0.5vh;
+}
+
+/* Estilos para formulário de contato */
+.contact-form {
+    margin-top: 6vh;
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 4vh 4vw;
+    border-radius: 1vw;
+}
+
+.contact-form h2 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+    text-align: center;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    margin-bottom: 2vh;
+    padding: 1vh 1vw;
+    border: none;
+    border-radius: 0.5vw;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #E0E7FF;
+    font-family: 'Space Mono', monospace;
+}
+
+.contact-form textarea {
+    height: 15vh;
+    resize: vertical;
+}
+
+.contact-form button {
+    align-self: center;
+}
+
+@media (max-width: 768px) {
+    .case-study h3 {
+        font-size: 3.5vw;
+    }
+
+    .case-study p {
+        font-size: 3vw;
+    }
+
+    .partners-section h2,
+    .news-section h2,
+    .contact-form h2 {
+        font-size: 5vw;
+    }
+
+    .partners-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .partner {
+        font-size: 4vw;
+    }
+
+    .news-item h3 {
+        font-size: 4vw;
+    }
+
+    .news-item p {
+        font-size: 3vw;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+        font-size: 3.5vw;
+    }
+}
+
+/* Adicione estes estilos ao seu arquivo CSS existente */
+
+.exoclimate-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4vh 2vw;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.exoclimate-intro {
+    text-align: center;
+    margin-bottom: 4vh;
+}
+
+.exoclimate-form {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 4vh 4vw;
+    border-radius: 1vw;
+    margin-bottom: 4vh;
+}
+
+.exoclimate-form h2 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+}
+
+.exoclimate-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.exoclimate-form input {
+    margin-bottom: 2vh;
+    padding: 1vh 1vw;
+    border: none;
+    border-radius: 0.5vw;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #E0E7FF;
+    font-family: 'Space Mono', monospace;
+}
+
+.exoclimate-form button {
+    align-self: center;
+}
+
+#result {
+    margin-top: 2vh;
+    font-size: 1.2vw;
+    text-align: center;
+}
+
+.exoclimate-explanation {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 4vh 4vw;
+    border-radius: 1vw;
+}
+
+.exoclimate-explanation h2 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+}
+
+.exoclimate-explanation p {
+    margin-bottom: 2vh;
+}
+
+@media (max-width: 768px) {
+    .exoclimate-form h2,
+    .exoclimate-explanation h2 {
+        font-size: 5vw;
+    }
+
+    .exoclimate-form input,
+    #result,
+    .exoclimate-explanation p {
+        font-size: 3.5vw;
+    }
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.leaflet-container {
+    background-color: #333;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background-color: #222;
+    color: #E0E7FF;
+}
+
+.welcome-box {
+    background-color: rgba(123, 140, 222, 0.1);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(123, 140, 222, 0.2);
+    text-align: center; /* Centraliza todo o texto dentro da caixa */
+}
+
+.welcome-box h2 {
+    color: #7B8CDE;
+    font-size: 2.2vw;
+    margin-bottom: 15px;
+}
+
+.welcome-box p {
+    font-size: 1.2vw;
+    line-height: 1.6;
+    max-width: 80%; /* Limita a largura do parágrafo para melhor legibilidade */
+    margin-left: auto; /* Centraliza o parágrafo horizontalmente */
+    margin-right: auto;
+}
+
+/* Centralize também o título principal (h1) se ele estiver dentro do container */
+.container > h1 {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .welcome-box h2 {
+        font-size: 6vw;
+    }
+
+    .welcome-box p {
+        font-size: 3.5vw;
+        max-width: 100%; /* Em telas menores, permite que o texto ocupe toda a largura */
+    }
+}
+
+.timeline-section {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 4vh 4vw;
+    border-radius: 1vw;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+.timeline-section h3 {
+    color: #7B8CDE;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+    text-align: center;
+}
+
+.timeline {
+    list-style-type: none;
+    padding: 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2vw;
+    width: 2px;
+    background-color: #7B8CDE;
+}
+
+.timeline li {
+    margin-bottom: 4vh;
+    padding-left: 5vw;
+    position: relative;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 0.5vw;
+    top: 0;
+    width: 3vw;
+    height: 3vw;
+    background-color: #7B8CDE;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    color: #000000;
+}
+
+.timeline .date {
+    font-weight: bold;
+    color: #7B8CDE;
+    font-size: 1.2vw;
+    margin-bottom: 0.5vh;
+    display: block;
+}
+
+.timeline-content h4 {
+    color: #E0E7FF;
+    font-size: 1.4vw;
+    margin-bottom: 0.5vh;
+}
+
+.timeline-content p {
+    font-size: 1vw;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .timeline-section h3 {
+        font-size: 5vw;
+    }
+
+    .timeline::before {
+        left: 4vw;
+    }
+
+    .timeline li {
+        padding-left: 12vw;
+    }
+
+    .timeline-icon {
+        left: 2vw;
+        width: 8vw;
+        height: 8vw;
+        font-size: 4vw;
+    }
+
+    .timeline .date {
+        font-size: 3.5vw;
+    }
+
+    .timeline-content h4 {
+        font-size: 4vw;
+    }
+
+    .timeline-content p {
+        font-size: 3.5vw;
+    }
+}
+
+.featured-discovery h3,
+.exoplanet-categories h3 {
+    color: #E0E7FF;
+    font-size: 1.8vw;
+    margin-bottom: 1vh;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center; /* Adicionado para centralizar o texto */
+}
+
+@media (max-width: 768px) {
+    .featured-discovery h3,
+    .exoplanet-categories h3 {
+        font-size: 5vw;
+    }
+}
+
+/* Estilos para as páginas de categorias de planetas */
+.intro {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 2vh 2vw;
+    border-radius: 1vw;
+    margin-bottom: 4vh;
+}
+
+.characteristics, .habitability, .hot-jupiters, .exo-ice-worlds {
+    background-color: rgba(123, 140, 222, 0.05);
+    padding: 2vh 2vw;
+    border-radius: 1vw;
+    margin-bottom: 4vh;
+}
+
+.characteristics h2, .habitability h2, .hot-jupiters h2, .exo-ice-worlds h2 {
+    color: #7B8CDE;
+    font-size: 1.8vw;
+    margin-bottom: 2vh;
+}
+
+.characteristics ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.characteristics li {
+    margin-bottom: 1vh;
+    padding-left: 1.5vw;
+    position: relative;
+}
+
+.characteristics li::before {
+    content: '•';
+    color: #7B8CDE;
+    position: absolute;
+    left: 0;
+}
+
+.planet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vw;
+}
+
+.planet-card {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 2vh 2vw;
+    border-radius: 1vw;
+    text-align: center;
+}
+
+.planet-card h3 {
+    color: #7B8CDE;
+    font-size: 1.5vw;
+    margin-bottom: 1vh;
+}
+
+.planet-card img {
+    width: 100%;
+    border-radius: 0.5vw;
+    margin-bottom: 1vh;
+}
+
+.planet-card p {
+    font-size: 1vw;
+}
+
+@media (max-width: 768px) {
+    .characteristics h2, .habitability h2, .hot-jupiters h2, .exo-ice-worlds h2 {
+        font-size: 5vw;
+    }
+
+    .planet-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .planet-card h3 {
+        font-size: 4vw;
+    }
+
+    .planet-card p {
+        font-size: 3vw;
+    }
+}
+
+.main-title {
+    text-align: center;
+}
+
+#exoplanet-explorer {
+    width: 100%;
+    height: 70vh;
+    margin-bottom: 20px;
+}
+
+#exoplanet-info {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.landing-container {
+    z-index: 1;
+}
+
+#enter-button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    background-color: rgba(123, 140, 222, 0.2);
+    color: #E0E7FF;
+    border: 2px solid #7B8CDE;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#enter-button:hover {
+    background-color: rgba(123, 140, 222, 0.4);
+    transform: scale(1.05);
+}
+
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.zoom-in {
+    animation: zoomIn 1s forwards;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(1); }
+    to { transform: scale(20); }
+}
+
+.space-explorer,
+.exoplanet-explorer {
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.space-explorer h2,
+.exoplanet-explorer h2 {
+    color: #7B8CDE;
+    margin-bottom: 15px;
+}
+
+#exoplanet-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #E0E7FF;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Space Mono', monospace;
+}
+
+#iss-info,
+#exoplanet-info {
+    background-color: rgba(123, 140, 222, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#iss-info p,
+#exoplanet-info p {
+    margin-bottom: 5px;
+}
+
+.exoplanet-explorer-preview {
+    text-align: center;
+    background-color: rgba(123, 140, 222, 0.1);
+    padding: 4vh 4vw;
+    border-radius: 1vw;
+    margin: 4vh auto;
+    max-width: 800px;
+}
+
+.exoplanet-explorer-preview h2 {
+    color: #7B8CDE;
+    font-size: 2.5vw;
+    margin-bottom: 2vh;
+}
+
+.exoplanet-explorer-preview p {
+    font-size: 1.2vw;
+    margin-bottom: 3vh;
+}

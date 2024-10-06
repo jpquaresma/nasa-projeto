@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ExploPlanets</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <div id="star-field"></div>
+    <div class="container">
+        <header>
+            <h1 class="main-title">Exploração de Exoplanetas</h1>
+        </header>
+
+        <section class="welcome welcome-box">
+            <h2>Bem-vindo ao ExploPlanets</h2>
+            <p>Embarque em uma jornada através do cosmos.</p>
+        </section>
+
+        <section class="featured-discovery">
+            <h3>Descoberta em Destaque</h3>
+            <div class="discovery-content">
+                <img src="https://th.bing.com/th/id/OIP.tyxluqRRG531qR6WF6dmEgHaGS?rs=1&pid=ImgDetMain" alt="Gliese 12b" class="discovery-image">
+                <div class="discovery-text">
+                    <h4>Gliese 12b: Um Novo Candidato à Habitabilidade?</h4>
+                    <p>Gliese 12b é um exoplaneta fascinante que orbita uma estrela anã vermelha. Com um tamanho entre o da Terra e de Vênus, este mundo alienígena apresenta características intrigantes que o tornam um alvo promissor na busca por vida extraterrestre.</p>
+                    <div class="planet-comparison">
+                        <div class="planet-stat">
+                            <span class="stat-label">Tamanho:</span>
+                            <span class="stat-value">Ligeiramente menor que a Terra</span>
+                        </div>
+                        <div class="planet-stat">
+                            <span class="stat-label">Órbita:</span>
+                            <span class="stat-value">12,8 dias terrestres</span>
+                        </div>
+                        <div class="planet-stat">
+                            <span class="stat-label">Estrela:</span>
+                            <span class="stat-value">Anã vermelha (27% do tamanho solar)</span>
+                        </div>
+                    </div>
+                    <div class="read-more-container">
+                        <a href="descoberta.html" class="read-more">Saiba mais sobre Gliese 12b</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="iss-tracker-preview content-section">
+            <h2>Rastreador da ISS</h2>
+            <p>Acompanhe a posição atual da Estação Espacial Internacional em tempo real.</p>
+            <a href="iss-tracker.html" class="cta-button">Rastrear ISS</a>
+        </section>
+
+        <section class="exoplanet-categories">
+            <h3>Categorias de Exoplanetas</h3>
+            <div class="category-grid">
+                <a href="./pagina1.html" class="column button">
+                    <div class="planet-icon" id="rocky-planet"></div>
+                    <h2>Planetas Rochosos</h2>
+                    <p>Explore mundos semelhantes à Terra</p>
+                </a>
+                <a href="./pagina2.html" class="column button">
+                    <div class="planet-icon" id="gas-giant"></div>
+                    <h2>Gigantes Gasosos</h2>
+                    <p>Descubra os titãs do cosmos</p>
+                </a>
+                <a href="./pagina3.html" class="column button">
+                    <div class="planet-icon" id="ice-planet"></div>
+                    <h2>Mundos de Gelo</h2>
+                    <p>Viaje para as fronteiras geladas</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h3>Linha do Tempo da Exploração de Exoplanetas</h3>
+            <ul class="timeline">
+                <li>
+                    <span class="date">1992</span>
+                    <div class="timeline-icon"><i class="fas fa-star"></i></div>
+                    <div class="timeline-content">
+                        <h4>Primeiros exoplanetas descobertos</h4>
+                        <p>Aleksander Wolszczan e Dale Frail anunciam a descoberta de dois planetas orbitando o pulsar PSR B1257+12.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="date">1995</span>
+                    <div class="timeline-icon"><i class="fas fa-sun"></i></div>
+                    <div class="timeline-content">
+                        <h4>51 Pegasi b</h4>
+                        <p>Michel Mayor e Didier Queloz descobrem o primeiro exoplaneta orbitando uma estrela da sequência principal, 51 Pegasi.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="date">2009</span>
+                    <div class="timeline-icon"><i class="fas fa-satellite"></i></div>
+                    <div class="timeline-content">
+                        <h4>Missão Kepler</h4>
+                        <p>A NASA lança o telescópio espacial Kepler, dedicado à busca de exoplanetas.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="date">2019</span>
+                    <div class="timeline-icon"><i class="fas fa-globe"></i></div>
+                    <div class="timeline-content">
+                        <h4>4.000 exoplanetas</h4>
+                        <p>O número de exoplanetas confirmados ultrapassa a marca de 4.000, com milhares de candidatos adicionais.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre Nós</h4>
+                    <p>O ExploPlanets é dedicado a compartilhar as mais recentes descobertas e pesquisas sobre mundos além do nosso sistema solar.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Planetas Rochosos</a></li>
+                        <li><a href="#">Gigantes Gasosos</a></li>
+                        <li><a href="#">Mundos de Gelo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Email: joao.cordeiro@ort.org.br</p>
+                    <p>Telefone: +55 (21) 98819-0003</p>
+                </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
